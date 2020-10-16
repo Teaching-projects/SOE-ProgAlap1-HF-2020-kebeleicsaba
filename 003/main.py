@@ -25,3 +25,14 @@ Pelda kimenet:
 [0, 35, 1]
 
 """
+db = int(input())
+lista = []
+i = 0
+
+while db > i:
+    szam = int(input())
+    if szam >= 0:
+        lista.append(szam)
+        i += 1
+
+print(lista)
