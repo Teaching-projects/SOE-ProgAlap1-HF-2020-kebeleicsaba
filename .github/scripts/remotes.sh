@@ -9,4 +9,5 @@ remotes=(
     "Teo2002"
     "krisztikelemen"
     "kebeleicsaba"
+    "Fmiri08"
 )
