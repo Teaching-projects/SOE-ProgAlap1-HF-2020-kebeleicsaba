@@ -2,7 +2,7 @@ x=0.0
 y=0.0
 
 def KetPontTav(x1, y1):
-    print(round(((0 - x1) ** 2 + (0 - y1) ** 2) ** 0.5, 0))
+    print(round(((0 - x1) ** 2 + (0 - y1) ** 2) ** 0.5, 2))
 
 while True:
     irany = str(input())
