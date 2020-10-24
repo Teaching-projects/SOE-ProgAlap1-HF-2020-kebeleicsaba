@@ -26,3 +26,22 @@ Kimenet:
 5
 6
 """
+def Halmaz(lista):
+    kimenet = []
+    for i in range(len(lista)):
+        j = 0
+        van = False
+        while j < len(kimenet):
+            if kimenet[j] == lista[i]: van = True
+            j += 1
+        if van == False: kimenet.append(lista[i])
+    return kimenet
+
+szamok = []
+while True:
+    bekert = int(input())
+    if bekert == 0:
+        break
+    szamok.append(bekert)
+    
+for i in Halmaz(szamok[:]): print(i)
