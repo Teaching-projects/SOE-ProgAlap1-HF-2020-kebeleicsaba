@@ -40,6 +40,17 @@ def initialize_map (width, height):
     # Ide irjatok meg a kodotokat. Mindket argumentum egy int, es a sorok/oszlopok szamat fogja megadni.
     # A fuggveny ugy mukodjon, egy egy teglalap alaku terkepet adjon vissza a megfelelo sor es oszlopszammal, de ugy, hogy a szelso mezok falak (es csak azok)
     # Feltetelezheto, hogy mindket ertek legalabb 2
+    mapl = [["█"] * width]
+
+    for i in range(height-2):
+        line = ["█"]
+        for j in range(width-2): line.append("░")
+        line.append("█")
+        mapl.append(line)      
+          
+    mapl.append(["█"] * width) # utolsó sor
+    
+    return mapl
 
 
 """
