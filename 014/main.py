@@ -23,10 +23,25 @@ A szabaly a mozgasra nyilvan a kovetkezo: ha val van, nem tudunk oda menni. A pa
 
 def pretty_map_print(map, character):
     # Ide masold be a multkorit, modositas nem szukseges
+    x = character["position"]["x"]
+    y = character["position"]["y"]
+    width = len(map[1])
+    height = len(map)
+
+    if (x <= width - 1 and x >= 0) and (y <= height - 1 and y >= 0): map[y][x] = "🧙‍"
+
+    for i in range(len(map)):
+        for j in range(len(map[i])): print(map[i][j], end="")
+        print("")
 
 def move(map,character,direction):
     # fentiek alapjan, direction lehet "up", "down", "left", "right"
+    map[character["position"]["y"]][character["position"]["x"]] = "░"
 
+    if direction == "up": character["position"]["y"] -= 1
+    elif direction == "down": character["position"]["y"] += 1
+    elif direction == "left": character["position"]["x"] -= 1
+    elif direction == "right": character["position"]["x"] += 1
 
 
 ###############################################################
