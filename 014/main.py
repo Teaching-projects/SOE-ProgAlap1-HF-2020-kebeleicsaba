@@ -31,17 +31,22 @@ def pretty_map_print(map, character):
     if (x <= width - 1 and x >= 0) and (y <= height - 1 and y >= 0): map[y][x] = "🧙‍"
 
     for i in range(len(map)):
-        for j in range(len(map[i])): print(map[i][j], end="")
+        for j in range(len(map[i])): 
+            print(map[i][j], end="")
+            if map[i][j] != "🧙‍": print(map[i][j], end="")
         print("")
+    
 
 def move(map,character,direction):
     # fentiek alapjan, direction lehet "up", "down", "left", "right"
+    x = character["position"]["x"]
+    y = character["position"]["y"]
     map[character["position"]["y"]][character["position"]["x"]] = "░"
 
-    if direction == "up": character["position"]["y"] -= 1
-    elif direction == "down": character["position"]["y"] += 1
-    elif direction == "left": character["position"]["x"] -= 1
-    elif direction == "right": character["position"]["x"] += 1
+    if (direction == "up") and (map[y-1][x] != "█"): character["position"]["y"] -= 1
+    elif (direction == "down") and (map[y+1][x] != "█"): character["position"]["y"] += 1
+    elif (direction == "left") and (map[y][x-1] != "█"): character["position"]["x"] -= 1
+    elif (direction == "right") and (map[y][x+1] != "█"): character["position"]["x"] += 1
 
 
 ###############################################################
