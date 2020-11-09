@@ -43,11 +43,20 @@ def move(map,character,direction):
     y = character["position"]["y"]
     map[character["position"]["y"]][character["position"]["x"]] = "░"
 
-    if (direction == "up") and (map[y-1][x] != "█"): character["position"]["y"] -= 1
-    elif (direction == "down") and (map[y+1][x] != "█"): character["position"]["y"] += 1
-    elif (direction == "left") and (map[y][x-1] != "█"): character["position"]["x"] -= 1
-    elif (direction == "right") and (map[y][x+1] != "█"): character["position"]["x"] += 1
-
+    if (direction == "up") and (map[y-1][x] != "█"): 
+        character["position"]["y"] -= 1
+        return True
+    elif (direction == "down") and (map[y+1][x] != "█"):
+        character["position"]["y"] += 1
+        return True
+    elif (direction == "left") and (map[y][x-1] != "█"):
+        character["position"]["x"] -= 1
+        return True
+    elif (direction == "right") and (map[y][x+1] != "█"):
+        character["position"]["x"] += 1
+        return True
+    else:
+        return False
 
 ###############################################################
 ###############################################################
