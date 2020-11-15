@@ -9,12 +9,49 @@ Ezen kivul meg a pretty print fuggvenyen kell annyit modositani, hogy ne fixen a
 
 def pretty_map_print(map, character):
     # A multkorit kell kicsit megpofozni
+    x = character["position"]["x"]
+    y = character["position"]["y"]
+    width = len(map[1])
+    height = len(map)
+    v = character["vision"]
+    c = character["icon"]
+
+    if (x <= width - 1 and x >= 0) and (y <= height - 1 and y >= 0): map[y][x] = c
+
+    for i in range(len(map)):
+        if (y-i) <= v and (i-y) <= v:
+            for j in range(len(map[i])): 
+                if (x-j) <= v and (j-x) <= v: print(map[i][j], end="")
+                if (map[i][j] != c):
+                    if ((x-j) <= v and (j-x) <= v): print(map[i][j], end="")
+            print("")
 
 def move(map,character,direction):
     # ide csak masold be a multkorit, nem kell pofozni
+    x = character["position"]["x"]
+    y = character["position"]["y"]
+    map[character["position"]["y"]][character["position"]["x"]] = "░"
+
+    if (direction == "up") and (map[y-1][x] != "█"): 
+        character["position"]["y"] -= 1
+        return True
+    elif (direction == "down") and (map[y+1][x] != "█"):
+        character["position"]["y"] += 1
+        return True
+    elif (direction == "left") and (map[y][x-1] != "█"):
+        character["position"]["x"] -= 1
+        return True
+    elif (direction == "right") and (map[y][x+1] != "█"):
+        character["position"]["x"] += 1
+        return True
+    else:
+        return False
 
 def stepped_on_mine(character,mines):
     # ide kell megirni az uj fuggvenyt a fentiek szerint.
+    for mine in mines:
+        if character["position"]["x"] == mine["position"]["x"] and character["position"]["y"] == mine["position"]["y"]: return True
+        else: return False
 
 """
 Helyes megvalositas eseten peldaul egy jobbra, majd ketto lefele lepes eseten ez a helyes kimenet:

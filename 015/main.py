@@ -51,11 +51,9 @@ def pretty_map_print(map, character):
         if (y-i) <= v and (i-y) <= v:
             for j in range(len(map[i])): 
                 if (x-j) <= v and (j-x) <= v: print(map[i][j], end="")
-                if (map[i][j] != "🧙") :
+                if (map[i][j] != "🧙"):
                     if ((x-j) <= v and (j-x) <= v): print(map[i][j], end="")
             print("")
-
-              
 
 def move(map,character,direction):
     # ide csak masold be a multkorit, nem kell pofozni
