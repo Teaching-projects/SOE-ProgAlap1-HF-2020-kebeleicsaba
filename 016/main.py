@@ -49,9 +49,11 @@ def move(map,character,direction):
 
 def stepped_on_mine(character,mines):
     # ide kell megirni az uj fuggvenyt a fentiek szerint.
+    death = False
     for mine in mines:
-        if character["position"]["x"] == mine["position"]["x"] and character["position"]["y"] == mine["position"]["y"]: return True
-        else: return False
+        if (character["position"]["x"] == mine["position"]["x"]) and (character["position"]["y"] == mine["position"]["y"]): death = True
+    if death: return True
+    else: return False
 
 """
 Helyes megvalositas eseten peldaul egy jobbra, majd ketto lefele lepes eseten ez a helyes kimenet:
