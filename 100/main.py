@@ -27,8 +27,8 @@ def position_distance(p1,p2):
 # Nem kell foglalkozni 3d tavolsaggal, csak a "felulnezeti tavolsaggal".
 def total_distance(gpx):
     sum = 0
-    for i in gpx:
-        sum += position_distance(i["position"])
+    for i in range(len(gpx) - 1):
+        sum += position_distance(gtx[i]["position"], gtx[i+1]["position"])
     return sum
 
 # Ez adja meg maasodpercben, milyen hosszan futottunk
