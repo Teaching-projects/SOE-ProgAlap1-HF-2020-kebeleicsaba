@@ -64,7 +64,7 @@ def pretty_time(seconds):
     if s < 10: s = "0" + str(s)
 
     if seconds < (60 * 60): # nem volt egy ora
-        else: return "{}:{}".format(m, s)
+        return "{}:{}".format(m, s)
     else: 
         if m < 10: m = "0" + str(m)
         return "{}:{}:{}".format(h, m, s)
