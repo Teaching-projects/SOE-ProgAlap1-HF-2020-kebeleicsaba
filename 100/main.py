@@ -35,8 +35,8 @@ def total_distance(gpx):
 # Ez adja meg maasodpercben, milyen hosszan futottunk
 def total_time(gpx):
     sum = 0
-    for i in gpx:
-        sum += i
+    for i in range(len(gpx) - 1):
+        sum += (gpx[i+1]["timestamp"] - gpx[i]["timestamp"])
     return sum
 
 # Ez a fuggveny adja meg masodpercben, hogy a futas soran hany masodpercig alldogaltunk csak futas helyett.
