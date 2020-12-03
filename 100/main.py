@@ -20,7 +20,7 @@ A feladatban tobb, esetenkent egymasra epulo fuggvenyt kell megirni, melyek erro
 # Ez a fugggveny adja meg ket position kozotti legvonalbeli tavolsagot meterben. 
 # p1 es p2 is (x,y) tuple-ok
 def position_distance(p1,p2):
-    return (((p2[0] - p1[0]) ** 2) + ((p2[1] - p1[1]) ** 2)) ** 1//2
+    return math.sqrt(((p2[0] - p1[0]) ** 2) + ((p2[1] - p1[1]) ** 2))
 
 # Ez a fuggveny egy gpx-et var, ami a fent leirt pontokbol allo lista.
 # A fuggveny adja meg a track teljes hosszat, ami a pontok kozotti legvonalbeli tavolsagok osszege.
