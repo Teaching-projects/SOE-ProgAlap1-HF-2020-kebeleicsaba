@@ -49,7 +49,7 @@ def idle_time(gpx):
 
 # Ez a fuggveny adja vissza masodpercben, hogy mennyit mozogtunk
 def moving_time(gpx):
-    pass
+    return total_time(gpx) - idle_time(gpx)
 
 # Ez a fuggveny adjon vissza egy stringet, amiben "szepen" benne van egy eltelt ido, amit masodpercben kapunk meg
 # Szep alat mm:ss formatumot ertjuk, ha nem volt legalabb egy ora, es hh:mm:ss formatumot, ha igen.
@@ -57,7 +57,17 @@ def moving_time(gpx):
 # Jo peldak: 3:14, 12:23:05, 1:00:01
 # Rossz peldak: 03:14, 12:23:5, 1:0:1
 def pretty_time(seconds):
-    pass
+    h = seconds // (60 * 60)
+    m = (seconds // 60) - (h * 60)
+    s = seconds - (h * 60 + m * 60)
+
+    if s < 10: s = "0" + str(s)
+
+    if seconds < (60 * 60): # nem volt egy ora
+        else: return "{}:{}".format(m, s)
+    else: 
+        if m < 10: m = "0" + str(m)
+        return "{}:{}:{}".format(h, m, s)
 
 # Ez a fuggveny szamolja ki, hogy mennyi volt az osszes emelkedes, azaz hany metert mentunk felfele
 def total_ascent(gpx):
