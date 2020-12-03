@@ -59,7 +59,7 @@ def moving_time(gpx):
 def pretty_time(seconds):
     h = seconds // (60 * 60)
     m = (seconds // 60) - (h * 60)
-    s = seconds - (h * 60 + m * 60)
+    s = seconds - (h * (60 * 60) + m * 60)
 
     if s < 10: s = "0" + str(s)
 
@@ -71,7 +71,10 @@ def pretty_time(seconds):
 
 # Ez a fuggveny szamolja ki, hogy mennyi volt az osszes emelkedes, azaz hany metert mentunk felfele
 def total_ascent(gpx):
-    pass
+    ascent = 0
+    for i in range(len(gpx) - 1):
+        if gpx[i]["elavation"] < gpx[i+1]["elavation"]: ascent += (gpx[i+1]["elavation"] - gpx[i]["elavation"])
+    return ascent
 
 # Ez a fuggveny keresse meg a gpx track elejen azt a legrovidebb reszt, ami mar atlepi a megadott tavolsagot, majd errol a reszrol adjon vissza egy masolatot.
 # A fuggveny adjon vissza egy ures tracket, ha az egesz gpx track nincs olyan hosszu, mint a megadott tavolsag.
