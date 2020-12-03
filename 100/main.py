@@ -28,7 +28,7 @@ def position_distance(p1,p2):
 def total_distance(gpx):
     sum = 0
     for i in range(len(gpx) - 1):
-        sum += position_distance(gtx[i]["position"], gtx[i+1]["position"])
+        sum += position_distance(gpx[i]["position"], gpx[i+1]["position"])
     return sum
 
 # Ez adja meg maasodpercben, milyen hosszan futottunk
