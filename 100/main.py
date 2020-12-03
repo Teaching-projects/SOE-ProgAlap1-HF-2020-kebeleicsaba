@@ -42,7 +42,10 @@ def total_time(gpx):
 # Ez a fuggveny adja meg masodpercben, hogy a futas soran hany masodpercig alldogaltunk csak futas helyett.
 # Alldogalasnak szamit, ha ket meresi pont kozott nem valtozik a pozicio
 def idle_time(gpx):
-    pass
+    sum = 0
+    for i in range(len(gpx) - 1):
+        if (gpx[i]["position"][0] == gpx[i+1]["position"][0]) and (gpx[i]["position"][1] == gpx[i+1]["position"][1]): sum += (gpx[i+1]["timestamp"] - gpx[i]["timestamp"])
+    return sum
 
 # Ez a fuggveny adja vissza masodpercben, hogy mennyit mozogtunk
 def moving_time(gpx):
