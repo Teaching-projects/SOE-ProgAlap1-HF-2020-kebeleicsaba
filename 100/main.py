@@ -105,7 +105,7 @@ def fastest_1k(gpx):
 
     return chop_after_distance(gpx[idx:], 1000)    
 
-# Az alabbi reszek betoltenek egy ilyen pickle fajlt, es kiirjak a statisztikakat megformazva
+#Az alabbi reszek betoltenek egy ilyen pickle fajlt, es kiirjak a statisztikakat megformazva
 import pickle
 
 infile=open(input(),"rb")
