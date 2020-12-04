@@ -99,7 +99,7 @@ def fastest_1k(gpx):
     for i in range(len(gpx)):
         track = chop_after_distance(gpx[i:], 1000)
         trackTime = total_time(track)
-        if trackTime < min and 0 > trackTime:
+        if trackTime < min and 0 < trackTime:
             min = trackTime
             index = i
 
