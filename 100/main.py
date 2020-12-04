@@ -103,7 +103,7 @@ def fastest_1k(gpx):
             min = trackTime
             index = i
 
-    return chop_after_distance(gpx[index], 1000)    
+    return chop_after_distance(gpx[index:], 1000)    
 
 # Az alabbi reszek betoltenek egy ilyen pickle fajlt, es kiirjak a statisztikakat megformazva
 import pickle
