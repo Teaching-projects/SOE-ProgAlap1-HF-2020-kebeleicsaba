@@ -85,7 +85,7 @@ def chop_after_distance(gpx, distance):
         total = 0
         track = []
         for i in range(len(gpx) - 1):
-            total += total_distance(gpx)
+            total += position_distance(gpx[i]["position"], gpx[i+1]["position"])
             track.append(gpx[i])
             if total >= distance:
                 track.append(gpx[i+1])
