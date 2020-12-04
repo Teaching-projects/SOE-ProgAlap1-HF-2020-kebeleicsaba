@@ -79,12 +79,31 @@ def total_ascent(gpx):
 # Ez a fuggveny keresse meg a gpx track elejen azt a legrovidebb reszt, ami mar atlepi a megadott tavolsagot, majd errol a reszrol adjon vissza egy masolatot.
 # A fuggveny adjon vissza egy ures tracket, ha az egesz gpx track nincs olyan hosszu, mint a megadott tavolsag.
 def chop_after_distance(gpx, distance):
-    pass
+    if total_distance(gpx) < distance:
+        return []
+    else:
+        total = 0
+        track = []
+        for i in range(len(gpx) - 1):
+            total += total_distance(gpx)
+            track.append(gpx[i])
+            if total >= distance:
+                track.append(gpx[i+1])
+                return track    
 
 # Ez a fuggveny keresse meg a leggyorsabb, legalabb 1 km-es szakaszt a trackben, es adjon vissza rola egy masolatot
 def fastest_1k(gpx):
-    pass
+    min = chop_after_distance(gpx, 1000)
+    index = 0
 
+    for i in range(len(gpx)):
+        track = chop_after_distance(gpx[i:], 1000)
+        trackTime = total_time(track)
+        if trackTime < min and 0 > trackTime:
+            min = trackTime
+            index = i
+
+    return chop_after_distance(gpx[index], 1000)    
 
 # Az alabbi reszek betoltenek egy ilyen pickle fajlt, es kiirjak a statisztikakat megformazva
 import pickle
