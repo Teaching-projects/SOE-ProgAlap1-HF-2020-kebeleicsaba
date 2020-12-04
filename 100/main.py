@@ -93,7 +93,7 @@ def chop_after_distance(gpx, distance):
 
 # Ez a fuggveny keresse meg a leggyorsabb, legalabb 1 km-es szakaszt a trackben, es adjon vissza rola egy masolatot
 def fastest_1k(gpx):
-    min = chop_after_distance(gpx, 1000)
+    min = total_time(chop_after_distance(gpx, 1000))
     index = 0
 
     for i in range(len(gpx)):
