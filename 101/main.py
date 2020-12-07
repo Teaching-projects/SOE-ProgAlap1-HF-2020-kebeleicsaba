@@ -13,12 +13,16 @@ def kozte_van(betu:str, betuk:Tippek) -> bool:
     Returns:
         bool: `True` ha benne van, `False` ha nincsen.
     """
-    pass
+    for i in betuk:
+        if i == betu: return True
+        else: return False
 
 specialis_karakterek=[' ','.',',','!','?',':','-']
 
 def megjelenites(szo:str, betuk:Tippek) -> str:
-    """Visszaad egy olyan szót, amiben a `betuk`-ben lévő betűk látszanak, minden más helyére `_` kerül, kivéve néhány speciális karaktert, amik megjelennek változtatás nélkül. Ezen karakterek listája a `specialis_karakterek` globális listában adott.
+    """Visszaad egy olyan szót, amiben a `betuk`-ben lévő betűk látszanak, minden más helyére `_` kerül, kivéve 
+    néhány speciális karaktert, amik megjelennek változtatás nélkül. Ezen karakterek listája a `specialis_karakterek` 
+    globális listában adott.
 
     Kis és nagy betűket megkülönbözteti a függvény.
 
@@ -29,7 +33,17 @@ def megjelenites(szo:str, betuk:Tippek) -> str:
     Returns:
         str: a megjelenített változata a szónak
     """
-    pass
+    visszateres = ''
+    for MegfejtesSzoBetu in szo:
+        eppeniBetuJoe = False
+        specko = False
+        for tipp in betuk: if MegfejtesSzoBetu == tipp:
+            eppeniBetuJoe = True
+        for karakter in specialis_karakterek: if karakter == MegfejtesSzoBetu:
+            specko = True
+        if (eppeniBetuJoe and specko == False) or specko: visszateres += MegfejtesSzoBetu
+        elif eppeniBetuJoe == False and specko == False: visszateres += '_'
+    return visszateres
 
 def megfejtett(szo:str, betuk:Tippek) -> bool:
     """Megadja, hogy sikerült-e már megfejtenünk a szót, azaz minden benne levő betű már a tippjeink között van.
@@ -41,7 +55,10 @@ def megfejtett(szo:str, betuk:Tippek) -> bool:
     Returns:
         bool: `True` ha teljesen megfejtettük a szót, `False` különben
     """
-    pass
+    for tippBetu in Tippek:
+        if tartalmazza(szo, tippBetu) == False: return False
+    return True
+        
 
 def tartalmazza(szo:str, betu:str) -> bool:
     """Megadja, hogy a megaadott betű szerepel-e a megadott szóban.
@@ -53,7 +70,9 @@ def tartalmazza(szo:str, betu:str) -> bool:
     Returns:
         bool: `True` ha szerepel, `False` ha nem    
     """
-    pass
+    for i in szo:
+        if betu == i: return True
+        else: return False
 
 def rossz_tippek(szo:str, betuk:Tippek) -> int:
     """Megadja, hogy hány rossz betűt tippeltünk eddig.
@@ -65,7 +84,14 @@ def rossz_tippek(szo:str, betuk:Tippek) -> int:
     Returns:
         int: a rossz tippek száma
     """
-    pass
+    rosszDb = 0
+    for i in szo:
+        rossze = True
+        for j in betuk:
+            if j == i: rossze = False
+        if rossze: rosszDb += 1
+
+    return rosszDb 
 
 def eletek(osszes:int,elhasznalt:int)->str:
     """Visszaad egy olyan szöveget, ami egy indikátor arra, hány életünk van még.
@@ -79,18 +105,33 @@ def eletek(osszes:int,elhasznalt:int)->str:
     Returns:
         str: 😄😄😄💀💀 formátumú indikátor (a példa adatai: 5 összes, 2 elhasznált)
     """
-    pass
+    visszater = ''
+    mosolygosDb = osszes - elhasznalt
+    for i in range(osszes):
+        if mosolygosDb > 0:
+            visszater += '😄'
+            mosolygosDb -= 1
+        else: visszater += '💀'
+
 
 def akasztofa(szo:str,osszes_elet:int) -> None:
     """Végigvisz egy akasztófa játékot, ahol a megadott szót kell kitalálni, és `osszes_elet` rossz tipp után vesztettünk.
 
-    A játék minden körben először írja ki, hogy mit látunk a megfejtendő szóból, alá egy indikátort arról, hogy hány életünk van még, majd végül a tippelt karakterek listáját a tippek sorrendjében.
+    A játék minden körben először írja ki, hogy mit látunk a megfejtendő szóból, alá egy indikátort arról, hogy hány életünk van még,
+    majd végül a tippelt karakterek listáját a tippek sorrendjében.
 
-    Ezt követően az "Adja meg a kovetkezo betut: " kiírással kérjünk be egy betűt. Ellenőrzés nem szükséges se arra, hogy egyetlen betűt adtunk-e meg, se arra, hogy volt-e már korábban ez a betű. A megadott betűt irassuk is rögtön ki. (Szimplán, egymagában. Ennek pusztán annyi célja van, hogy nyomon követhetőbbek legyenek az out fájlok.)
+    Ezt követően az "Adja meg a kovetkezo betut: " kiírással kérjünk be egy betűt.
+    Ellenőrzés nem szükséges se arra, hogy egyetlen betűt adtunk-e meg, se arra, hogy volt-e már korábban ez a betű.
+    A megadott betűt irassuk is rögtön ki. (Szimplán, egymagában. Ennek pusztán annyi célja van, 
+    hogy nyomon követhetőbbek legyenek az out fájlok.)
 
-    Más kiiratás nem történik, a játék logikája egyértelmű: addig adunk le tippeket betűkre, amíg vagy meg nem fejtődik a szó, vagy el nem fogynak az életeink. Többször leadhatjuk ugyanazt a tippet, de ez rossz, akkor több életet is vesz el. A kiíratott listában is jelenjen meg duplán akkor ez a betű.
+    Más kiiratás nem történik, a játék logikája egyértelmű: 
+    addig adunk le tippeket betűkre, amíg vagy meg nem fejtődik a szó, vagy el nem fogynak az életeink.
+    Többször leadhatjuk ugyanazt a tippet, de ez rossz, akkor több életet is vesz el.
+    A kiíratott listában is jelenjen meg duplán akkor ez a betű.
 
-    Ha nyertünk, még kerüljön kiírásra a megfejtett szó, valamint alá egy olyan szöveg, hogy "Gratulalok, nyertel, es meg X eleted maradt!", ahol X értelemszerűen a megmaradt életek száma.
+    Ha nyertünk, még kerüljön kiírásra a megfejtett szó, valamint alá egy olyan szöveg, 
+    hogy "Gratulalok, nyertel, es meg X eleted maradt!", ahol X értelemszerűen a megmaradt életek száma.
 
     Ha vesztettünk, akkor egy "Sajnalom, nem nyertel, ez lett volna a megoldas: MEGOLDAS".
 
@@ -101,8 +142,14 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
         szo (str): a megfejtendő szó
         osszes_elet (int): az életeink száma, azaz hány rossz tipp után vesztettünk
     """
-    pass
-    
+    kor = osszes_elet
+    tippek = []
+    while kor > 0:
+        tippek.append(input())
+        megjelenites(szo, tippek)        
+
+
+    kor -= 1
 
 
 
