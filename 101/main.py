@@ -34,7 +34,7 @@ def megjelenites(szo:str, betuk:Tippek) -> str:
         str: a megjelenített változata a szónak
     """
     visszateres = ''
-    for MegfejtesSzoBetu in szo:
+    """for MegfejtesSzoBetu in szo:
         eppeniBetuJoe = False
         specko = False
         for tipp in betuk:
@@ -44,6 +44,15 @@ def megjelenites(szo:str, betuk:Tippek) -> str:
         if (eppeniBetuJoe and specko == False) or specko: visszateres += MegfejtesSzoBetu
         elif eppeniBetuJoe == False and specko == False: visszateres += '_'
     return visszateres
+    """
+    for i in szo:
+        eppeniBetuJoe = False
+        specko = False
+        if kozte_van(i, betuk): eppeniBetuJoe = True
+        if kozte_van(i, specialis_karakterek): specko = True
+        if eppeniBetuJoe or specko: visszateres += i
+        else: visszateres += "_"
+
 
 def megfejtett(szo:str, betuk:Tippek) -> bool:
     """Megadja, hogy sikerült-e már megfejtenünk a szót, azaz minden benne levő betű már a tippjeink között van.
