@@ -144,14 +144,17 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
     """
     kor = osszes_elet
     tippek = []
+    nyertunk = False
     while kor > 0:
         megjelenites(szo, tippek)
-        eletek(szo, kor)
+        eletek(osszes_elet, rossz_tippek(szo, tippek))
         print(tippek)
         betu = input("Adja meg a kovetkezo betut: ")
         print(betu)
         tippek.append(betu)
-
+        if megfejtett(szo, tippek):
+            nyertunk = True
+            break
 
 
     kor -= 1
