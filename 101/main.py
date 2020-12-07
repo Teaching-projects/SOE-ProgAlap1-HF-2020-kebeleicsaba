@@ -37,10 +37,10 @@ def megjelenites(szo:str, betuk:Tippek) -> str:
     for MegfejtesSzoBetu in szo:
         eppeniBetuJoe = False
         specko = False
-        for tipp in betuk: if MegfejtesSzoBetu == tipp:
-            eppeniBetuJoe = True
-        for karakter in specialis_karakterek: if karakter == MegfejtesSzoBetu:
-            specko = True
+        for tipp in betuk:
+            if MegfejtesSzoBetu == tipp: eppeniBetuJoe = True
+        for karakter in specialis_karakterek:
+            if karakter == MegfejtesSzoBetu: specko = True
         if (eppeniBetuJoe and specko == False) or specko: visszateres += MegfejtesSzoBetu
         elif eppeniBetuJoe == False and specko == False: visszateres += '_'
     return visszateres
@@ -146,7 +146,8 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
     tippek = []
     while kor > 0:
         tippek.append(input())
-        megjelenites(szo, tippek)        
+        megjelenites(szo, tippek)
+        eletek(szo, kor)     
 
 
     kor -= 1
