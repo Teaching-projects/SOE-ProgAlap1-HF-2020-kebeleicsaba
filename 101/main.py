@@ -62,7 +62,7 @@ def megfejtett(szo:str, betuk:Tippek) -> bool:
      """
     
     for i in szo:
-        if kozte_van(i, betuk) == False: return False
+        if kozte_van(i, betuk) == False and kozte_van(i, specialis_karakterek) == False: return False
     return True  
 
 def tartalmazza(szo:str, betu:str) -> bool:
@@ -165,6 +165,7 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
         print(megjelenites(szo, tippek))
         print(eletek(osszes_elet, rossz))
         print(tippek)
+        #print(megfejtett('aaa,aaaa', ['a', 'b']))
         betu = str(input("Adja meg a kovetkezo betut: "))
         print(betu)
         tippek.append(betu)
@@ -172,7 +173,8 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
             nyertunk = True
             break
         
-        if tartalmazza(szo, betu) == False: kor -= 1
+        if tartalmazza(szo, betu) == False:
+            kor -= 1
 
     if nyertunk: 
         print(szo)
