@@ -64,7 +64,7 @@ def megfejtett(szo:str, betuk:Tippek) -> bool:
     Returns:
         bool: `True` ha teljesen megfejtettük a szót, `False` különben
     """
-    for tippBetu in Tippek:
+    for tippBetu in betuk:
         if tartalmazza(szo, tippBetu) == False: return False
     return True
         
