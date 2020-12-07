@@ -145,9 +145,13 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
     kor = osszes_elet
     tippek = []
     while kor > 0:
-        tippek.append(input())
         megjelenites(szo, tippek)
-        eletek(szo, kor)     
+        eletek(szo, kor)
+        print(tippek)
+        betu = input("Adja meg a kovetkezo betut: ")
+        print(betu)
+        tippek.append(betu)
+
 
 
     kor -= 1
