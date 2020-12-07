@@ -52,6 +52,7 @@ def megjelenites(szo:str, betuk:Tippek) -> str:
         if kozte_van(i, specialis_karakterek): specko = True
         if eppeniBetuJoe or specko: visszateres += i
         else: visszateres += "_"
+    return visszateres
 
 
 def megfejtett(szo:str, betuk:Tippek) -> bool:
