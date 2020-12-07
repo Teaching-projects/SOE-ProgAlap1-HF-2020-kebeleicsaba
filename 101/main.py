@@ -54,13 +54,7 @@ def megfejtett(szo:str, betuk:Tippek) -> bool:
 
     Returns:
         bool: `True` ha teljesen megfejtettük a szót, `False` különben
-    """
-    """
-    for tippBetu in betuk:
-        if tartalmazza(szo, tippBetu) == False: return False
-    return True
-     """
-    
+    """    
     for i in szo:
         if kozte_van(i, betuk) == False and kozte_van(i, specialis_karakterek) == False: return False
     return True  
@@ -90,13 +84,7 @@ def rossz_tippek(szo:str, betuk:Tippek) -> int:
         int: a rossz tippek száma
     """
     rosszDb = 0
-    """
-    for i in szo:
-        rossze = True
-        for j in betuk:
-            if j == i: rossze = False
-        if rossze: rosszDb += 1
-        """
+    
     for i in betuk:
         rossze = True
         for j in szo:
@@ -165,7 +153,24 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
         print(megjelenites(szo, tippek))
         print(eletek(osszes_elet, rossz))
         print(tippek)
+        
+        #print(kozte_van('a', ['k', 's']))
+        #print(kozte_van('a', ['k', 'a']))
+        
+        #print(megjelenites("jozsi, peti", ["j", "t", "k", "c"]))
+        
         #print(megfejtett('aaa,aaaa', ['a', 'b']))
+
+        #print(tartalmazza('joska', 'o'))
+        #print(tartalmazza('joska', 'z'))
+
+        #print(rossz_tippek('joska, pista', ['a', 'o', 'z']))
+
+        #print(eletek(10, 2))
+        #print(eletek(6, 5))
+        #print(eletek(6, 0))
+
+
         betu = str(input("Adja meg a kovetkezo betut: "))
         print(betu)
         tippek.append(betu)
