@@ -158,10 +158,12 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
     """
     kor = osszes_elet
     tippek = []
+    
     nyertunk = False
     while kor > 0:
+        rossz = rossz_tippek(szo, tippek)
         print(megjelenites(szo, tippek))
-        print(eletek(osszes_elet, rossz_tippek(szo, tippek)))
+        print(eletek(osszes_elet, rossz))
         print(tippek)
         betu = str(input("Adja meg a kovetkezo betut: "))
         print(betu)
@@ -175,6 +177,7 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
     if nyertunk: 
         print(szo)
         print("Gratulalok, nyertel, es meg {} eleted maradt!".format(kor))
+    else: print("Sajnalom, nem nyertel, ez lett volna a megoldas: {}".format(szo))
 
 
 # Ez alatt ne tessek modositani.
