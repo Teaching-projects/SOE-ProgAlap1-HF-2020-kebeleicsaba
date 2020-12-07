@@ -34,17 +34,7 @@ def megjelenites(szo:str, betuk:Tippek) -> str:
         str: a megjelenített változata a szónak
     """
     visszateres = ''
-    """for MegfejtesSzoBetu in szo:
-        eppeniBetuJoe = False
-        specko = False
-        for tipp in betuk:
-            if MegfejtesSzoBetu == tipp: eppeniBetuJoe = True
-        for karakter in specialis_karakterek:
-            if karakter == MegfejtesSzoBetu: specko = True
-        if (eppeniBetuJoe and specko == False) or specko: visszateres += MegfejtesSzoBetu
-        elif eppeniBetuJoe == False and specko == False: visszateres += '_'
-    return visszateres
-    """
+
     for i in szo:
         eppeniBetuJoe = False
         specko = False
@@ -65,10 +55,15 @@ def megfejtett(szo:str, betuk:Tippek) -> bool:
     Returns:
         bool: `True` ha teljesen megfejtettük a szót, `False` különben
     """
+    """
     for tippBetu in betuk:
         if tartalmazza(szo, tippBetu) == False: return False
     return True
-        
+     """
+    
+    for i in szo:
+        if kozte_van(i, betuk) == False: return False
+    return True  
 
 def tartalmazza(szo:str, betu:str) -> bool:
     """Megadja, hogy a megaadott betű szerepel-e a megadott szóban.
@@ -166,8 +161,6 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
     nyertunk = False
     while kor > 0:
         print(megjelenites(szo, tippek))
-        print(kozte_van('a', ['k', 'a']))
-        #print(eletek(osszes_elet, rossz_tippek(szo, tippek)))
         print(eletek(osszes_elet, rossz_tippek(szo, tippek)))
         print(tippek)
         betu = str(input("Adja meg a kovetkezo betut: "))
@@ -176,9 +169,12 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
         if megfejtett(szo, tippek):
             nyertunk = True
             break
-        kor -= 1
+        
+        if tartalmazza(szo, betu) == False: kor -= 1
 
-
+    if nyertunk: 
+        print(szo)
+        print("Gratulalok, nyertel, es meg {} eleted maradt!".format(kor))
 
 
 # Ez alatt ne tessek modositani.
