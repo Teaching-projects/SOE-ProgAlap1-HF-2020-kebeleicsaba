@@ -95,9 +95,16 @@ def rossz_tippek(szo:str, betuk:Tippek) -> int:
         int: a rossz tippek száma
     """
     rosszDb = 0
+    """
     for i in szo:
         rossze = True
         for j in betuk:
+            if j == i: rossze = False
+        if rossze: rosszDb += 1
+        """
+    for i in betuk:
+        rossze = True
+        for j in szo:
             if j == i: rossze = False
         if rossze: rosszDb += 1
 
@@ -159,6 +166,7 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
     nyertunk = False
     while kor > 0:
         print(megjelenites(szo, tippek))
+        #print(eletek(osszes_elet, rossz_tippek(szo, tippek)))
         print(eletek(osszes_elet, rossz_tippek(szo, tippek)))
         print(tippek)
         betu = str(input("Adja meg a kovetkezo betut: "))
@@ -167,9 +175,8 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
         if megfejtett(szo, tippek):
             nyertunk = True
             break
+        kor -= 1
 
-
-    kor -= 1
 
 
 
