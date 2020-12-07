@@ -15,7 +15,7 @@ def kozte_van(betu:str, betuk:Tippek) -> bool:
     """
     for i in betuk:
         if i == betu: return True
-        else: return False
+    return False
 
 specialis_karakterek=[' ','.',',','!','?',':','-']
 
@@ -82,7 +82,7 @@ def tartalmazza(szo:str, betu:str) -> bool:
     """
     for i in szo:
         if betu == i: return True
-        else: return False
+    return False
 
 def rossz_tippek(szo:str, betuk:Tippek) -> int:
     """Megadja, hogy hány rossz betűt tippeltünk eddig.
@@ -166,6 +166,7 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
     nyertunk = False
     while kor > 0:
         print(megjelenites(szo, tippek))
+        print(kozte_van('a', ['k', 'a']))
         #print(eletek(osszes_elet, rossz_tippek(szo, tippek)))
         print(eletek(osszes_elet, rossz_tippek(szo, tippek)))
         print(tippek)
