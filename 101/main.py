@@ -123,6 +123,8 @@ def eletek(osszes:int,elhasznalt:int)->str:
             mosolygosDb -= 1
         else: visszater += '💀'
 
+    return visszater
+
 
 def akasztofa(szo:str,osszes_elet:int) -> None:
     """Végigvisz egy akasztófa játékot, ahol a megadott szót kell kitalálni, és `osszes_elet` rossz tipp után vesztettünk.
@@ -156,10 +158,10 @@ def akasztofa(szo:str,osszes_elet:int) -> None:
     tippek = []
     nyertunk = False
     while kor > 0:
-        megjelenites(szo, tippek)
-        eletek(osszes_elet, rossz_tippek(szo, tippek))
+        print(megjelenites(szo, tippek))
+        print(eletek(osszes_elet, rossz_tippek(szo, tippek)))
         print(tippek)
-        betu = input("Adja meg a kovetkezo betut: ")
+        betu = str(input("Adja meg a kovetkezo betut: "))
         print(betu)
         tippek.append(betu)
         if megfejtett(szo, tippek):
