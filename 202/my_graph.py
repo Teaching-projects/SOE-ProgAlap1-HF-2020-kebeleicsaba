@@ -76,23 +76,40 @@ B-C
 class Graph:
     
     def __init__(self, vertices=[]):
-        pass
+        self.vertices = vertices
+        self.edges = []
     
     def has_vertex(self, vertex):
-        pass
+        return vertex in self.vertices
     
     def add_vertex(self, vertex):
-        pass
+        if self.has_vertex(vertex): return False
+        else: 
+            self.vertices.append(vertex)
+            return True
     
     def add_edge(self,vertex1,vertex2):
-        pass
+        if self.has_edge(vertex1, vertex2): return False
+        else:
+            self.edges.append((vertex1, vertex2))
+            self.edges.append((vertex2, vertex1))
+            return True
     
     def has_edge(self,vertex1,vertex2):
-        pass
+        return (vertex1, vertex2) in self.edges or (vertex2, vertex1) in self.edges
 
     def d(self,vertex):
-        pass
+        if not self.has_vertex(vertex): return None
+        else:
+            count = 0
+            for i in self.vertices: 
+                if self.has_edge(i, vertex): count += 1
+            return count
     
     def get_subgraph(self,vertices):
-        pass
+        subgraph = Graph(vertices)
+        for i in vertices:
+            for j in vertices: 
+                if self.has_edge(i, j): subgraph.add_edge(i, j)
+        return subgraph
     
